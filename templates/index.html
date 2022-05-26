@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+	<title>DaVinci</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"
+		integrity="sha256-HkXXtFRaflZ7gjmpjGQBENGnq8NIno4SDNq/3DbkMgo="
+		crossorigin="anonymous"
+	></script>
+</head>
+
+<body>
+	<div class="header">
+		{% if dialog %}
+		<form action="/clear" method="post">
+			<button id="refresh-btn"><i class="fas fa-sync"></i></button>
+		</form>
+		{% endif %}
+		<h3>DaVinci</h3>
+	</div>
+	<div class="chat">
+		<div class="messages">
+			{% for msg in dialog %}
+			<div class="msg" data-sender="bot">
+				<span class="msg-timestamp">{{msg.timestamp}}</span>
+				<span class="msg-sender">{{msg.sender}}</span> <br />
+				<p class="msg-content">{{msg.content}}</p>
+			</div>
+			{% endfor %}
+		</div>
+		<form class="form" action="/" method="post">
+			<input
+				type="text"
+				name="question"
+				required
+				placeholder="Fai una domanda..."
+			/>
+			<input class="submit" type="submit" value="Invia" />
+		</form>
+	</div>
+
+	{% if result %}
+	<div class="result">{{ result }}</div>
+	{% endif %}
+
+	<script>
+		// when the page loads, scroll the .messages div to the bottom
+		document.addEventListener("DOMContentLoaded", function () {
+			const messages = document.querySelector(".messages");
+			messages.scrollTop = messages.scrollHeight;
+		});
+	</script>
+</body>
