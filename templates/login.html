@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <head>
-  <title>DaVinci</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"
-    integrity="sha256-HkXXtFRaflZ7gjmpjGQBENGnq8NIno4SDNq/3DbkMgo="
-    crossorigin="anonymous"
-  ></script>
+	<title>DaVinci</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"
+		integrity="sha256-HkXXtFRaflZ7gjmpjGQBENGnq8NIno4SDNq/3DbkMgo="
+		crossorigin="anonymous"
+	></script>
 </head>
 
 <body>
-  <h3>Login</h3>
-  <form
-    class="form"
-    action="/login"
-    method="post"
-    autocomplete="off"
-    novalidate
-  >
-    <input
-      autocomplete="off"
-      type="password"
-      name="password"
-      required
-      placeholder="********"
-    />
-    <input class="submit" type="submit" value="Entra" />
-  </form>
-  {% if wrong %}
-  <p class="wrong">Password errata</p>
-  {% endif %}
+	<h3>Login</h3>
+	<form
+		class="form"
+		action="/login"
+		method="post"
+		autocomplete="off"
+		novalidate
+	>
+		<input
+			autocomplete="off"
+			type="password"
+			name="password"
+			id="password-input"
+			required
+			placeholder="********"
+		/>
+		<input class="submit" type="submit" value="Entra" />
+	</form>
+	{% if wrong %}
+	<p class="wrong">Password errata</p>
+	{% endif %}
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector("#password-input").focus();
+		});
+	</script>
 </body>

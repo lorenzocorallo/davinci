@@ -30,6 +30,7 @@
 		</div>
 		<form class="form" action="/" method="post">
 			<input
+				id="msg-input"
 				type="text"
 				name="question"
 				required
@@ -48,6 +49,7 @@
 		document.addEventListener("DOMContentLoaded", function () {
 			const messages = document.querySelector(".messages");
 			messages.scrollTop = messages.scrollHeight;
+			document.querySelector("#msg-input").focus();
 		});
 	</script>
 </body>
