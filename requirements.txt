@@ -2,6 +2,7 @@ autopep8==1.6.0
 certifi==2021.10.8
 charset-normalizer==2.0.7
 click==8.0.3
+colorama==0.4.4
 et-xmlfile==1.1.0
 Flask==2.0.2
 idna==3.3
@@ -22,4 +23,5 @@ six==1.16.0
 toml==0.10.2
 tqdm==4.62.3
 urllib3==1.26.7
+waitress==2.1.1
 Werkzeug==2.0.2
