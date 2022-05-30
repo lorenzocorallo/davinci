@@ -46,7 +46,7 @@ h3 {
 	position: relative;
 	gap: 1rem;
 	max-width: 100rem;
-	width: 100%;
+	width: 90%;
 }
 
 #refresh-btn {
@@ -77,16 +77,23 @@ h3 {
 	max-height: calc(100vh - 20rem);
 }
 
-.messages::-webkit-scrollbar {
+#session-info {
+	color: rgb(107, 107, 107);
+	font-weight: 300;
+	margin-bottom: 1rem;
+	font-style: italic;
+}
+
+#messages::-webkit-scrollbar {
 	width: 7px;
 }
 
-.messages::-webkit-scrollbar-thumb {
+#messages::-webkit-scrollbar-thumb {
 	border-radius: 15px;
 	background-color: #a0a0a0;
 }
 
-.messages {
+#messages {
 	flex: 1;
 	padding: 0 2rem;
 	/* max-height: 80rem; */
@@ -170,4 +177,84 @@ h3 {
 
 .submit:hover {
 	background: rgb(0, 110, 0);
+}
+
+/* Message typing animation */
+@keyframes blink {
+	0% {
+		opacity: 0.2;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.2;
+	}
+}
+
+.typing {
+	display: inline-flex;
+	flex-direction: row;
+	border-radius: 12px;
+	background: #eee;
+	padding: 0.8rem;
+}
+
+.typing .dot {
+	animation-name: blink;
+	animation-duration: 1.4s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: both;
+	width: 6px;
+	height: 6px;
+	background-color: #333;
+	border-radius: 50%;
+	display: block;
+	margin: 0 0.25rem;
+	padding: 0;
+}
+
+.typing .dot:nth-child(2) {
+	animation-delay: 0.2s;
+}
+
+.typing .dot:nth-child(3) {
+	animation-delay: 0.4s;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #1a1a1a;
+	}
+
+	body,
+	input,
+	h3 {
+		color: white;
+	}
+
+	#session-info {
+		color: rgb(151, 151, 151);
+	}
+
+	.form input[type="text"] {
+		background: rgb(66, 66, 66);
+	}
+
+	.typing {
+		background: #292929;
+	}
+
+	.typing .dot {
+		background-color: #c4c4c4;
+	}
+	.msg[data-sender="bot"] .msg-sender {
+		color: #ff5e5e;
+	}
+	.msg[data-sender="sender"] .msg-sender {
+		color: #ab55dd;
+	}
+	.msg-content::before {
+		color: rgb(102, 207, 255);
+	}
 }

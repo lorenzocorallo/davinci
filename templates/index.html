@@ -11,24 +11,16 @@
 
 <body>
 	<div class="header">
-		{% if dialog %}
 		<form action="/clear" method="post">
 			<button id="refresh-btn"><i class="fas fa-sync"></i></button>
 		</form>
-		{% endif %}
 		<h3>DaVinci</h3>
 	</div>
 	<div class="chat">
-		<div class="messages">
-			{% for msg in dialog %}
-			<div class="msg" data-sender="bot">
-				<span class="msg-timestamp">{{msg.timestamp}}</span>
-				<span class="msg-sender">{{msg.sender}}</span> <br />
-				<p class="msg-content">{{msg.content}}</p>
-			</div>
-			{% endfor %}
+		<div id="messages">
+			<p id="session-info"></p>
 		</div>
-		<form class="form" action="/" method="post">
+		<form class="form" id="msg-form">
 			<input
 				id="msg-input"
 				type="text"
@@ -40,16 +32,5 @@
 		</form>
 	</div>
 
-	{% if result %}
-	<div class="result">{{ result }}</div>
-	{% endif %}
-
-	<script>
-		// when the page loads, scroll the .messages div to the bottom
-		document.addEventListener("DOMContentLoaded", function () {
-			const messages = document.querySelector(".messages");
-			messages.scrollTop = messages.scrollHeight;
-			document.querySelector("#msg-input").focus();
-		});
-	</script>
+	<script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
